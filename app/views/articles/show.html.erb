@@ -4,6 +4,15 @@
   Title: <%= @article.title %>
 </p>
 
+<% if @article.user %>
+  <ul>
+    <li>Created by:</li>
+    <li><%= link_to gravatar_for(@article.user), user_path(@article.user) %></li>
+    <li><%= link_to @article.user.username, user_path(@article.user) %></li>
+    <li><%= pluralize(@article.user.articles.count, "article") %></li>
+  </ul>
+<% end %>
+
 <p>
   Description: <%= @article.description %>
 </p>
